@@ -43,13 +43,21 @@ all_events AS (
         UNION ALL
         SELECT
             'new' AS type,
-            user_id,
-            product_code,
-            timestamp,
-            event_id,
+            new.user_id,
+            new.product_code,
+            new.timestamp,
+            new.event_id,
             NULL AS user_session_id
         FROM
-            new_events
+            new_events AS new
+        LEFT JOIN
+            jb.user_session_dds AS old
+                ON old.user_id = new.user_id
+                AND old.product_code = new.product_code
+                AND old.event_id = new.event_id
+                AND old.timestamp = new.timestamp
+        WHERE
+            old.user_id IS NULL -- filter if we have already processed the data in current batch     
     ) AS events
 ),
 
