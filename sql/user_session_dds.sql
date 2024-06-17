@@ -94,7 +94,7 @@ events_time_diff AS (
     )
 ),
 
--- Define session start
+-- Define sessions
 session_start AS (
     SELECT
         user_id,
@@ -142,7 +142,7 @@ session_num_generation AS (
     )
 ),
 
--- Define beginning and end of each session
+-- Define the beginning of each session
 session_bounds AS (
     SELECT
         user_id,
@@ -164,7 +164,7 @@ session_bounds AS (
     )
 )
 
--- Final result
+-- Final result for insert
 SELECT
     user_id,
     product_code,
