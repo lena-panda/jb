@@ -54,10 +54,7 @@ CREATE TABLE IF NOT EXISTS jb.user_session_dm (
   user_session_id Nullable(String),
   start_session_dttm Nullable(DateTime),
   end_session_dttm Nullable(DateTime),
-  session_duration_sec Nullable(Int32),
-  total_event_cnt Nullable(Int32),
-  user_event_cnt Nullable(Int32),
-  system_event_cnt Nullable(Int32)
+  session_duration_sec Nullable(Int32)
 )
 ENGINE = MergeTree()
 ORDER BY (user_id, product_code, user_session_id)
