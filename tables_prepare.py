@@ -106,4 +106,4 @@ def fill_raw_table():
         'TRUNCATE TABLE IF EXISTS jb.user_action_raw'
     )
     client.execute(fill_raw_query, example_data.values.tolist())
-    print('Tables with example data are ready')
+    print('Table user_action_raw with example data is ready')
