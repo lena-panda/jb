@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS jb.user_action_raw
 
 create_user_action_raw_query = '''
 CREATE TABLE IF NOT EXISTS jb.user_action_raw (
-      load_timestamp Nullable(Int32),
+  load_timestamp Nullable(Int32),
   timestamp Nullable(Int32),
   user_id Nullable(Int32),
   event_id Nullable(String),
@@ -92,9 +92,9 @@ def fill_raw_table():
             row = {
                 'load_timestamp': int(datetime.timestamp(datetime.now().replace(second=0, microsecond=0) - timedelta(days=day-1))),
                 'timestamp': int(datetime.timestamp(datetime.now().replace(minute=0, hour=0, second=0, microsecond=0) - timedelta(days=day) + timedelta(seconds=random.randrange(1, 86400, 1)))),
-                'user_id': random.SystemRandom().choice([1, 3, 5, 7]),
+                'user_id': random.SystemRandom().choice([1, 3, 5, 7, 9, 11, 15]),
                 'event_id': random.SystemRandom().choice(['a', 'b', 'c', 'x', 'y', 'z']),
-                'product_code': random.SystemRandom().choice(['datagrip', 'pycharm']),
+                'product_code': random.SystemRandom().choice(['datagrip', 'pycharm', 'datalore']),
             }
             example_data = pd.concat([example_data, pd.DataFrame([row])], ignore_index=True)
 
